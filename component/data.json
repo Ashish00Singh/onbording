@@ -1,0 +1,87 @@
+[
+ {
+  "Name": "CoreX Plan",
+  "Domains": "Health and Wellness",
+  "planId":"7gyZ",
+  "Price": 5000,
+  "Status": 1,
+  "InsuranceElement":"",
+  "OfflineIntervention":"",
+  "ProductDescription": "Essential wellness plan with key digital health tools for your well-being.",
+  "OnlineIntervention": "GP Teleconsultations (24x7)|AI-Driven Step Counter|Health Risk Assessment",
+  "Coverage": "Individual",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ },
+ {
+  "Name": "VitalEdge Plan",
+  "Domains": "Health and Wellness",
+  "planId":"7gy21",
+  "Price": 10000,
+  "Status": 1,
+  "InsuranceElement":"",
+  "OfflineIntervention":"",
+  "ProductDescription": "A balanced digital wellness plan with mental, nutritional, and dental care support.",
+  "OnlineIntervention": "GP Teleconsultations (24x7)|Psychologist Consultations|Nutritionist Consultations & Diet Plan|Virtual Dental Consultations|Discounted Dental Services|AI-Driven Step Counter|Health Risk Assessment|Discounted Diagnostics & Medicine Delivery",
+  "Coverage": "Individual",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ },
+ {
+  "Name": "ShieldPlus Plan",
+  "Domains": "Health and Wellness",
+  "planId":"7gy5",
+  "Price": 20000,
+  "Status": 1,
+  "InsuranceElement":"",
+  "ProductDescription": "Comprehensive wellness and health support with offline diagnostics, pharmacy benefits, and 24x7 consultations.",
+  "OfflineIntervention": "Free Annual Health Checkup (80 Parameters)|Prescribed Diagnostics (Up to 50% Off)|Prescribed Pharmacy (Up to 20% Off)",
+  "OnlineIntervention": "GP Teleconsultations (24x7)|Psychologist Consultations|Nutritionist Consultations & Diet Plan|Virtual Dental Consultations|Discounted Dental Services|AI-Driven Step Counter|Health Risk Assessment|Discounted Diagnostics & Medicine Delivery|Metabolic Profiling|",
+  "Coverage": "Individual",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ },
+ {
+  "Name": "TotalCare Pro Plan",
+  "Domains": "Health and Wellness",
+  
+  "planId":"7gy2",
+  "Price": 30000,
+  "Status": 1,
+  "ProductDescription": "24x7 GP & psychologist consultations, nutrition, dental care, free checkups, metabolic profiling, and up to 50% off prescribed services.",
+  "InsuranceElement": "Hospicash (Rs. 1000 per day hospitalization with max up to 30 days in a year)| Personal Accidental (100% SI paid on Accidental Death| Permanent Total disability| and permanent partial disability) – 10 Lakh, Critical Illness Cover (100% Sum Insured Benefit (SI – 2L))| Health Insurance (Indemnity - Individual, Sum Insured: 10L)",
+  "OfflineIntervention": "Free Annual Health Checkup (80 Parameters)| Prescribed Diagnostics Up to 50% discount| Prescribed Pharmacy Up to 20% discount| Specialist In-person Consultations (Capped at 5) – amount capping 1000\/Consultation",
+  "OnlineIntervention": "GP Teleconsult (Available 24x7)| Psychologist Consults (Available 24x7)| Nutritionist Consults & Diet Management + Free Diet Plan| Dental Consultations (Virtual)| AI Driven Step Counter| Discounted Dental Services| Health Risk Assessment| Discounted Diagnostics & Medicine Delivery| Metabolic Profiling for personalized recommendations| Specialist Teleconsult (18+ specialist verticals) – Unlimited",
+  "Coverage": "Family",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ },
+ {
+  "Name": "TitanSecure Plan",
+  "Domains": "Health and Wellness",
+  "planId":"7gy1",
+  "Price": 40000,
+  "Status": 1,
+  "ProductDescription": "24x7 consultations, personalized health care, free checkups, unlimited specialists, premium insurance, and exclusive discounts.",
+  "InsuranceElement": "Hospicash (₹1,000\/day, max 30 days\/year)| Personal Accident Insurance (₹10 Lakh SI)| Critical Illness Cover (₹2 Lakh SI)",
+  "OfflineIntervention": "Free Annual Health Checkup (80 Parameters)| Prescribed Diagnostics Up to 50% discount| Prescribed Pharmacy Up to 20% discount| Specialist In-person Consultations (Capped at 5) – amount capping 1000\/Consultation",
+  "OnlineIntervention": "GP Teleconsult (Available 24x7)| Psychologist Consults (Available 24x7)| Nutritionist Consults & Diet Management + Free Diet Plan| Dental Consultations (Virtual)| AI Driven Step Counter| Discounted Dental Services| Health Risk Assessment| Discounted Diagnostics & Medicine Delivery| Metabolic Profiling for personalized recommendations| Specialist Teleconsult (18+ specialist verticals) – Unlimited",
+  "Coverage": "Family",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ },
+ {
+  "Name": "OmniHealth Elite Plan",
+  "planId":"7gy",
+  "Domains": "Health and Wellness",
+  "Price": 50000,
+  "Status": 1,
+  "ProductDescription": "Elite 24x7 consultations, personalized health strategies, unlimited specialist access, premium checkups, and exclusive insurance & discounts.",
+  "InsuranceElement": "Hospicash (₹1,000\/day, max 30 days\/year), Personal Accident Insurance (₹10 Lakh SI)| Critical Illness Cover (₹2 Lakh SI)| Health Insurance – Indemnity (₹10 Lakh SI)",
+  "OfflineIntervention": "Free Annual Health Checkup (80 Parameters)| Prescribed Diagnostics Up to 50% discount| Prescribed Pharmacy Up to 20% discount| Specialist In-person Consultations (Capped at 5) – amount capping 1000\/Consultation",
+  "OnlineIntervention": "GP Teleconsult (Available 24x7)| Psychologist Consults (Available 24x7)| Nutritionist Consults & Diet Management + Free Diet Plan| Dental Consultations (Virtual)| AI Driven Step Counter| Discounted Dental Services| Health Risk Assessment| Discounted Diagnostics & Medicine Delivery| Metabolic Profiling for personalized recommendations| Specialist Teleconsult (18+ specialist verticals) – Unlimited",
+  "Coverage": "Family",
+  "Created At": "05\/01\/2025",
+  "Updated At": "05\/09\/2025"
+ }
+]
