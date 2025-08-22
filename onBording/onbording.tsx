@@ -491,26 +491,26 @@ export default function Onbording() {
                                     )}
 
                                 </div>
-                                 <div className='border mt-8 p-2 py-4 rounded-lg border-red-400'>
-                                <h2 className='capitalize'>emergency Layout</h2>
+                                <div className='border mt-8 p-2 py-4 rounded-lg border-red-400'>
+                                    <h2 className='capitalize'>emergency Layout</h2>
 
-                                <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mt-4'>
-                                    {emergencyLayout.map((item: any, index) =>
-                                        <div key={index}>
-                                            <Inputcustom label={item.label} type={item.type} placeholder='Name'
-                                                value={formData.personaldta?.emergencyContact[item.collect] ?? ''}
-                                                onChange={(e) => collectionDatas(e, item, 'personaldta', "emergencyContact")}
-                                            />
-                                            {errors[item.collect] && (
-                                                <span className="text-red-500 text-sm">{item.error}</span>
-                                            )}
-                                        </div>
-                                    )}
+                                    <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mt-4'>
+                                        {emergencyLayout.map((item: any, index) =>
+                                            <div key={index}>
+                                                <Inputcustom label={item.label} type={item.type} placeholder='Name'
+                                                    value={formData.personaldta?.emergencyContact[item.collect] ?? ''}
+                                                    onChange={(e) => collectionDatas(e, item, 'personaldta', "emergencyContact")}
+                                                />
+                                                {errors[item.collect] && (
+                                                    <span className="text-red-500 text-sm">{item.error}</span>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+
+
                                 </div>
-
-
-                            </div>
-                                <Button className='mt-5' onClick={() =>  setEdit(!Edit)} > {Edit === true ? "Edit" : "Save"} </Button>
+                                <Button className='mt-5' onClick={() => setEdit(!Edit)} > {Edit === true ? "Edit" : "Save"} </Button>
                             </div>
 
                             <div className='mt-8'>
@@ -546,21 +546,12 @@ export default function Onbording() {
 
                         </div> : null}
 
-
-
-
-
-
-
-
-
-
-                    <div className='flex justify-between'>
+                    {/* <div className='flex justify-between'>
                         {active !== 'personal' ?
                             <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={prevStep} >prev</button> : null}
                         {active !== 'Payment' ?
                             <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStep} >Next</button> : null}
-                    </div>
+                    </div> */}
 
 
                 </div>
@@ -569,10 +560,13 @@ export default function Onbording() {
                 <div className="plans bg-white/95 backdrop-blur-lg rounded-2xl p-6 mb-6 shadow-xl border border-white/30">
                     <h2 className='font-bold' >plans</h2>
 
-                    {/* <Inputcustom label="Name" placeholder='Name' /> */}
+                    <div className=' flex justify-between'>
+                        {active !== 'personal' ?
+                        <Button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={prevStep} >Prev</Button> : null}
                     {active === 'adidional' ?
                         <AlertBox onClick={nextStepbtn} /> :
-                        <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStepbtn} >Next </button>}
+                        <Button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStepbtn} >Next </Button>}
+                    </div>
 
 
                 </div>
