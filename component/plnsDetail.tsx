@@ -31,11 +31,11 @@ const data = [
 
 
 import datas from "./data.json"
-import DilogBox from './dilogBox'
+import DilogBox from './dilogbox/dilogBox'
 
 export default function PlnsDetail({ active, setFormData, formData }: any) {
     const [select, setSelect] = useState(formData.plansDetail?.planId ?? {})
-    console.log(formData)
+    // console.log(formData)
     return (
 
         <div>
@@ -89,7 +89,7 @@ export default function PlnsDetail({ active, setFormData, formData }: any) {
                                 });
                                 setSelect(item.planId)
                             }} key={item.planId}
-                            className={`${select === item.planId ? `border-red-700` : null}  p-6 border rounded-2xl shadow-lg bg-white hover:shadow-2xl transition`}>
+                            className={`${select === item.planId ? `border-red-700 shadow-lg shadow-red-300` : `shadow-lg hover:shadow-2xl `}  p-6 border rounded-2xl  bg-white transition`}>
                             <h2 className="text-xl font-semibold mb-2">{item.Name} </h2>
                             <p className="text-sm text-gray-500 mb-4">{item.Domains}</p>
                             <p className="mb-6 text-gray-700">{item.ProductDescription}</p>

@@ -3,12 +3,16 @@ import React, { useState } from 'react'
 import Inputcustom from '../component/inputcustom'
 import { Input } from '@/components/ui/input';
 import PlnsDetail from '../component/plnsDetail';
-import { log } from 'console';
+import { Button } from '@/components/ui/button';
+import ViewPlan from '../component/plans/viewPlan';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import AlertBox from '../component/dilogbox/alertBox';
+import FinalView from '../component/payment/finalView';
 
 
 interface emergencyC {
     name: string;
-    phoneNumbers: number | null;
+    phoneNumber: number | null;
     relationship: string
 }
 
@@ -36,7 +40,7 @@ const form1: FormData = {
     zipCode: null,
     emergencyContact: {
         name: "",
-        phoneNumbers: null,
+        phoneNumber: null,
         relationship: "",
     }
 };
@@ -94,16 +98,22 @@ const formLayout = [
 ]
 const emergencyLayout = [
     {
-        label: ' Name',
+        label: 'Name',
+        collect: 'name',
         type: 'text',
+        error: 'enetr the falid'
     },
     {
-        label: 'phoneNumber',
+        label: 'Phone Number',
+        collect: 'phoneNumber',
         type: 'number',
+        error: 'enetr the falid'
     },
     {
         label: 'Relationship',
+        collect: 'relationship',
         type: 'text',
+        error: 'enetr the falid'
     },
 ]
 
@@ -111,6 +121,7 @@ const emergencyLayout = [
 
 export default function Onbording() {
     const [data, setData] = useState<any>(form1)
+    const [Edit, setEdit] = useState<boolean>(true);
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [active, setActive] = useState('personal')
     const [formData, setFormData] = useState<any>(
@@ -173,17 +184,34 @@ export default function Onbording() {
     const collectionDatas = (
         e: React.ChangeEvent<HTMLInputElement>,
         item: any,
-        section: "personaldta" | "plansDetail" | "addional" | "payment"
+        section: "personaldta" | "plansDetail" | "addional" | "payment",
+        type?: any
     ) => {
         const value = e.target.value;
 
-        setFormData((prev: any) => ({
-            ...prev,
-            [section]: {
-                ...prev[section],
-                [item.collect]: item.type === "number" ? Number(value) : value,
-            },
-        }));
+
+        if (type === "emergencyContact") {
+
+            setFormData((prev: any) => ({
+                ...prev,
+                [section]: {
+                    ...prev[section],
+                    emergencyContact: {
+                        ...prev[section].emergencyContact,
+                        [item.collect]: item.type === "number" ? Number(value) : value,
+                    }
+                }
+            }));
+        }
+        else {
+            setFormData((prev: any) => ({
+                ...prev,
+                [section]: {
+                    ...prev[section],
+                    [item.collect]: item.type === "number" ? Number(value) : value,
+                },
+            }));
+        }
 
         // ✅ Validation
         if (item.collect === "phoneNumber") {
@@ -312,12 +340,12 @@ export default function Onbording() {
     };
 
     const nextStepbtn = () => {
-        console.log(errors)
+        // console.log(errors)
         if (active === "personal") {
 
             const fieldsToCheck = {
                 ...formData.personaldta,
-                // ...formData.personaldta.emergencyContact,
+                ...formData.personaldta.emergencyContact,
 
             };
 
@@ -364,15 +392,17 @@ export default function Onbording() {
                 ...formData.plansDetail,
             };
 
-            console.log(fieldsToCheck)
+            // console.log(fieldsToCheck)
 
             if (fieldsToCheck.planId !== "") {
-                console.log(fieldsToCheck.planId);
+                // console.log(fieldsToCheck.planId);
                 setActive('adidional')
 
             } else {
-                console.log("asdasd");
+                // console.log("asdasd");
             }
+        } else if (active === "adidional") {
+            setActive('Payment')
         }
 
 
@@ -418,6 +448,26 @@ export default function Onbording() {
                                     </div>
                                 )}
                             </div>
+                            <div className='border mt-8 p-2 py-4 rounded-lg border-red-400'>
+                                <h2 className='capitalize'>emergency Layout</h2>
+
+                                <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mt-4'>
+                                    {emergencyLayout.map((item: any, index) =>
+                                        <div key={index}>
+                                            <Inputcustom label={item.label} type={item.type} placeholder='Name'
+                                                value={formData.personaldta?.emergencyContact[item.collect] ?? ''}
+                                                onChange={(e) => collectionDatas(e, item, 'personaldta', "emergencyContact")}
+                                            />
+                                            {errors[item.collect] && (
+                                                <span className="text-red-500 text-sm">{item.error}</span>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+
+
+                            </div>
+
                         </div> : null}
 
                     {active === 'plans' ? <PlnsDetail active={active} setFormData={setFormData} formData={formData} /> : null}
@@ -430,7 +480,7 @@ export default function Onbording() {
                                 <div className='grid grid-cols-2 gap-4 pt-8'>
                                     {formLayout.map((item: any, index) =>
                                         <div key={index}>
-                                            <Inputcustom label={item.label} type={item.type} placeholder='Name'
+                                            <Inputcustom disabled={Edit} className='disabled:opacity-75' label={item.label} type={item.type} placeholder='Name'
                                                 value={formData.personaldta[item.collect] ?? ''}
                                                 onChange={(e) => collectionDatas(e, item, 'personaldta')}
                                             />
@@ -439,14 +489,51 @@ export default function Onbording() {
                                             )}
                                         </div>
                                     )}
+
                                 </div>
+                                 <div className='border mt-8 p-2 py-4 rounded-lg border-red-400'>
+                                <h2 className='capitalize'>emergency Layout</h2>
+
+                                <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mt-4'>
+                                    {emergencyLayout.map((item: any, index) =>
+                                        <div key={index}>
+                                            <Inputcustom label={item.label} type={item.type} placeholder='Name'
+                                                value={formData.personaldta?.emergencyContact[item.collect] ?? ''}
+                                                onChange={(e) => collectionDatas(e, item, 'personaldta', "emergencyContact")}
+                                            />
+                                            {errors[item.collect] && (
+                                                <span className="text-red-500 text-sm">{item.error}</span>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+
+
+                            </div>
+                                <Button className='mt-5' onClick={() =>  setEdit(!Edit)} > {Edit === true ? "Edit" : "Save"} </Button>
                             </div>
 
-                            <div>
-                                Selected plan:
+                            <div className='mt-8'>
+                                <h2>Select Plan:</h2>
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <Button className='my-4 border-black font-semibold text-base' variant="outline">Change the Plan</Button>
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[725px]">
+                                        <DialogHeader>
+                                            <DialogTitle>Change Your Plan</DialogTitle>
+                                            <DialogDescription>
+                                                Secure your future with Synck Health Plans — simple, reliable, and smart choice for lifelong peace of mind.
+                                            </DialogDescription>
+                                        </DialogHeader>
+                                        <PlnsDetail active={active} setFormData={setFormData} formData={formData} />
+                                    </DialogContent>
 
-                                <PlnsDetail active={active} setFormData={setFormData} formData={formData} />
-                                
+                                </Dialog>
+                                <ViewPlan formData={formData} />
+
+
+
                             </div>
 
                         </div> : null}
@@ -454,6 +541,8 @@ export default function Onbording() {
                     {active === 'Payment' ?
                         <div>
                             <h2 className='font-bold' > Payment</h2>
+
+                            <FinalView formData={formData} />
 
                         </div> : null}
 
@@ -467,8 +556,10 @@ export default function Onbording() {
 
 
                     <div className='flex justify-between'>
-                        <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={prevStep} >prev</button>
-                        <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStep} >Next</button>
+                        {active !== 'personal' ?
+                            <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={prevStep} >prev</button> : null}
+                        {active !== 'Payment' ?
+                            <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStep} >Next</button> : null}
                     </div>
 
 
@@ -479,8 +570,9 @@ export default function Onbording() {
                     <h2 className='font-bold' >plans</h2>
 
                     {/* <Inputcustom label="Name" placeholder='Name' /> */}
-
-                    <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStepbtn} >Next </button>
+                    {active === 'adidional' ?
+                        <AlertBox onClick={nextStepbtn} /> :
+                        <button className='bg-black text-white rounded-sm  p-2 px-10 mt-4 ' onClick={nextStepbtn} >Next </button>}
 
 
                 </div>
